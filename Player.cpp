@@ -154,20 +154,18 @@ int main (void)
 {
 	initscr();
 	noecho();
-	raw();
 	keypad(stdscr, TRUE);
 	curs_set(0);
-	//nodelay(stdscr, TRUE);
+	nodelay(stdscr, TRUE);
 	Player p;
-	Bullet b(0, 15, 3);
+	Bullet b(10, 0, 1);
 	while(1)
 	{
-		clear();
-		p.move();
-		p.draw();
-		b.move();
-		b.draw();
+		Drawable::move_all();
+		Drawable::draw_all();
 		refresh();
+		clear();
+		usleep(60);
 	}
 	endwin();
 	return 0;
