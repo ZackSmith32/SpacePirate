@@ -2,6 +2,8 @@
 #include "Drawable.hpp"
 
 Drawable* Drawable::list = NULL;
+int Drawable::xmax = 0;
+int Drawable::ymax = 0;
 
 Drawable::Drawable()
 {
@@ -33,22 +35,22 @@ int Drawable::getWidY() {return ywid;}
 
 void Drawable::moveX(float delta)
 {
-	int max_x, max_y;
-	getmaxyx(stdscr, max_y, max_x);
+	// int max_x, max_y;
+	// getmaxyx(stdscr, max_y, max_x);
 	xpos += delta;
-	if (xpos + xwid >= max_x)
-		xpos = max_x - xwid;
+	if (xpos >= xmax)
+		xpos = xmax - 1;
 	if (xpos < 0)
 		xpos = 0;
 }
 
 void Drawable::moveY(float delta)
 {
-	int max_x, max_y;
-	getmaxyx(stdscr, max_y, max_x);
+	// int max_x, max_y;
+	// getmaxyx(stdscr, max_y, max_x);
 	ypos += delta;
-	if (ypos >= max_y)
-		ypos = max_y - 1;
+	if (ypos >= ymax)
+		ypos = ymax - 1;
 	if (ypos < 0)
 		ypos = 0;
 }
@@ -57,6 +59,14 @@ void Drawable::draw_sprite()
 {
 	for (int i = 0; i < ywid; i++)
 		mvprintw(getY() + i, getX(), sprite.substr(xwid * i, xwid).c_str());
+}
+
+void Drawable::draw_bar(void) {
+	std::string bar_text;
+
+	bar_text = "blah foo bar blah lorem ipsum";
+	mvprintw(ymax - 21, 0, bar_text.c_str());
+	return ;
 }
 
 void Drawable::draw()
@@ -80,6 +90,7 @@ Drawable* Drawable::getNext()
 void Drawable::draw_all()
 {
 	Drawable *d = list;
+	draw_bar();
 	while (d)
 	{
 		d->draw();

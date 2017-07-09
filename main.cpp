@@ -22,6 +22,7 @@
 	-head seeking bullets
 */
 
+int Drawable::difficulty = 0;
 
 int main (void)
 {
@@ -34,6 +35,7 @@ int main (void)
 		init_pair(1, COLOR_RED, COLOR_BLACK);
 	}
 
+	getmaxyx(stdscr, Drawable::xmax, Drawable::ymax);
 	int max_x, max_y;
 	getmaxyx(stdscr, max_y, max_x);
 
@@ -41,10 +43,6 @@ int main (void)
 							"Easy",
 							"Medium",
 							"Hard",
-							// {'c','h','o','i','c','e','1','\0'},
-							// {'c','h','o','i','c','e','2','\0'},
-							// {'c','h','o','i','c','e','3','\0'},
-							// {'c','h','o','i','c','e','4','\0'}
 						};
 	int		n_choices = 3;
 	ITEM **my_items;
@@ -55,7 +53,7 @@ int main (void)
 
 	my_items = (ITEM **)calloc(n_choices + 1, sizeof(ITEM *));
 	for ( i = 0; i < n_choices; i++)
-		my_items[i] = new_item("-", choices[i]);
+		my_items[i] = new_item("-", choices[i]);		
 	my_items[n_choices] = (ITEM *)NULL;
 
 	my_menu = new_menu((ITEM **)my_items);
@@ -85,7 +83,8 @@ int main (void)
 	
 	post_menu(my_menu);
 	wrefresh(my_menu_win);
-	char *selection = 0;
+	// char *selection = 0;
+	int selection = 0;
 
 	while((c = wgetch(my_menu_win)) != KEY_F(1))
 	{       
@@ -100,13 +99,9 @@ int main (void)
 			case 10: /* Enter */
 			{	
 				ITEM *cur;
-				// void (*p)(char *);
-
 				cur = current_item(my_menu);
-				// p = item_userptr(cur);
-				selection = (char *)item_description(cur);
-
-				// pos_menu_cursor(my_menu);
+				Drawable::difficulty = item_index(cur) + 1;
+				selection = 1;
 				break;
 			}
 			break;

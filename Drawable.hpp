@@ -12,6 +12,8 @@ public:
 	int getY();
 	int getWidX();
 	int getWidY();
+	static int	xmax;
+	static int	ymax;
 	void moveX(float delta);
 	void moveY(float delta);
 
@@ -24,9 +26,11 @@ public:
 	static void draw_all();
 	static void move_all();
 	static void collide_all();
+	static int difficulty;
 protected:
 	float xpos;
 	float ypos;
+
 
 	int xwid;
 	int ywid;
@@ -37,6 +41,9 @@ protected:
 	static Drawable* list;
 	Drawable* next;
 	Drawable* prev;
+	static void draw_bar();
 };
+
+
 
 #endif
