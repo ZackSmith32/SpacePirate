@@ -1,9 +1,11 @@
 #ifndef ENEMY_H
 # define ENEMY_H
 
+#include <cmath>
+#include <iomanip>	// setw (set width)
 #include <iostream>
 #include "Drawable.hpp"
-#include <cmath>
+#include "header.hpp"
 
 class Enemy : public Drawable {
 
@@ -11,12 +13,13 @@ class Enemy : public Drawable {
 		Enemy(int xpos, int ypos, float speed);
 		~Enemy(void);
 		Enemy & operator=(Enemy & src);
-		void incrementRoutine(void);
 		void move();
 		void draw();
 
 	private:
 		float _speed;
+		int _yLimit;
+		
 		int	_routineIndex;
 		int	_routineIndexMax;
 		static float _xRoutine[4];
@@ -25,6 +28,8 @@ class Enemy : public Drawable {
 		float _xCurr;
 		float _yCurr;
 
+		float _calcMove(int max);
+		void _incrementRoutine(void);
 };
 
 

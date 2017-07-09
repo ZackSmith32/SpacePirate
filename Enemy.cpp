@@ -1,9 +1,9 @@
 #include <Enemy.hpp>
 
-float Enemy::_xRoutine[4] = {0, 4, 0, -4};
-float Enemy::_yRoutine[4] = {4, 0, 4, 0};
+float Enemy::_xRoutine[4] = {0, 10, 0, -10};
+float Enemy::_yRoutine[4] = {10, 0, 10, 0};
 
-Enemy::Enemy(int x, int y, float speed) {
+Enemy::Enemy(int x, int y, int yLimit, float speed) {
 	xpos = x;
 	ypos = y;
 	xwid = 3;
@@ -12,6 +12,7 @@ Enemy::Enemy(int x, int y, float speed) {
 	_yCurr = 0;
 	sprite = " ^ < > v ";
 	symbol = '+';
+	_yLimit = yLimit;
 
 	_speed = speed;
 	_routineIndex = 0;
@@ -36,20 +37,35 @@ void Enemy::draw()
 }
 
 void	Enemy::move() {
-	incrementRoutine();
-	moveX(_xRoutine[_routineIndex]);
-	moveY(_yRoutine[_routineIndex]);
+	_incrementRoutine();
 
-	if (_routineIndex == _routineIndexMax - 1)
-		_routineIndex = 0;
-	else
-		_routineIndex++;
+	float	xMove = _calcMove(_xRoutine[_routineIndex]);
+	float	yMove = _calcMove(_yRoutine[_routineIndex]);
+	if (!DEBUG) {
+		std::cout << "x =" << std::setw(6) << xMove;
+		std::cout << ";  y =" << std::setw(6) << yMove;
+		std::cout << std::endl << std::endl;
+		
+	}
+	moveX(xMove);
+	moveY(yMove);
+
+	_xCurr += xMove;
+	_yCurr += yMove;
 	return ;
 }
 
-void	Enemy::incrementRoutine(void) {
-	int		xNeg;
-	int		yNeg;
+float	Enemy::_calcMove(int max) {
+	float	delta = _speed;
+
+	if (max < 0)
+		delta *= -1;
+	if (max == 0)
+		delta = 0;
+	return (delta);
+}
+
+void	Enemy::_incrementRoutine(void) {
 	float	tXCurr = _xCurr;
 	float	tXMax = _xRoutine[_routineIndex];
 	float	tYCurr = _yCurr;
@@ -57,21 +73,21 @@ void	Enemy::incrementRoutine(void) {
 
 	// change to positive
 	if (tXMax < 0) {
-		xNeg = 1;
 		tXCurr *= -1;
 		tXMax *= -1;
 	}
 	if (tYMax < 0) {
-		yNeg = 1;
 		tYCurr *= -1;
 		tYMax *= -1;
 	}
 	// see if curr has reached script val
-	if (tXCurr >= tXMax || tYCurr >= tYMax) {
+	if (tXCurr >= tXMax && tYCurr >= tYMax) {
+		_xCurr = 0;
+		_yCurr = 0;
 		if (_routineIndex == _routineIndexMax)
-			_routineIndex++;
-		else
 			_routineIndex = 0;
+		else
+			_routineIndex++;
 	}
 }
 
