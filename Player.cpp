@@ -29,7 +29,7 @@ void Player::move()
 	else if (c == KEY_DOWN)
 		moveY(1);
 	else if (c == ' ')
-		new Bullet(getX(), getY() - 1, -1, false); //needs to be centered
+		new Bullet(getX(), getY() - 1, 0.25 * (rand()%3 - 1), -1, false); //needs to be centered
 }
 
 void Player::draw()

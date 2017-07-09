@@ -29,7 +29,7 @@ int main (void)
 	Enemy	vader(max_x / 2 , 0, 0.25);
 	while(1)
 	{
-		new Bullet(rand()% max_x, 0, 2, true);
+		new Bullet(rand()% max_x, 0, 0, 2, true);
 		Drawable::move_all();
 		Drawable::collide_all();
 		Drawable::draw_all();
