@@ -57,6 +57,12 @@ void Drawable::moveY(float delta)
 		ypos = 0;
 }
 
+void Drawable::draw_sprite()
+{
+	for (int i = 0; i < ywid; i++)
+		mvprintw(getY() + i, getX(), sprite.substr(xwid * i, xwid).c_str());
+}
+
 void Drawable::draw()
 {
 	mvaddch(getY(), getX(), symbol);
