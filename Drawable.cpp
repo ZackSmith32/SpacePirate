@@ -17,7 +17,11 @@ Drawable::Drawable()
 Drawable::~Drawable()
 {
 	if (prev == NULL)
+	{
 		Drawable::list = next;
+		if (Drawable::list)
+			Drawable::list->prev = NULL;
+	}
 	else
 	{
 		prev->next = this->next;
@@ -87,7 +91,7 @@ void Drawable::draw_all()
 {
 	Drawable *d = list;
 	draw_bar();
-	while (d)
+	while (d != NULL)
 	{
 		d->draw();
 		d = d->getNext();
@@ -97,7 +101,7 @@ void Drawable::draw_all()
 void Drawable::move_all()
 {
 	Drawable *d = list;
-	while (d)
+	while (d != NULL)
 	{
 		d->move();
 		d = d->getNext();
@@ -120,7 +124,7 @@ void Drawable::collide_check(Drawable *list)
 {
 	if (collided)
 		return ;
-	for(; list; list = list->next)
+	for(; list != NULL; list = list->next)
 	{
 		if (this == list)
 			continue ;
@@ -135,13 +139,13 @@ void Drawable::collide_check(Drawable *list)
 void Drawable::collide_all()
 {
 	Drawable *d = list;
-	while (d)
+	while (d != NULL)
 	{
 		d->collide_check(list);
 		d = d->getNext();
 	}
 	d = list;
-	while (d)
+	while (d != NULL)
 	{
 		d->collide();
 		d = d->getNext();

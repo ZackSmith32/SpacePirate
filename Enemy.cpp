@@ -29,9 +29,9 @@ Enemy::Enemy(int x, int y, int yLimit, float speed) {
 	return ;
 }
 
-Enemy::~Enemy(void) {
-	return ;
-}
+// Enemy::~Enemy(void) {
+// 	return ;
+// }
 
 Enemy & Enemy::operator=(Enemy & src) {
 	if (this == &src)
@@ -62,7 +62,7 @@ void	Enemy::move() {
 	if (rand() % 3 == 0)
 	{
 		// std::cout << "bullet made" << std::endl;
-		//new  Bullet(getX() + xwid / 2, getY() + ywid + 1, 0, 1, 0);
+		new  Bullet(getX() + xwid / 2, getY() + ywid + 1, 0, 1, 0);
 	}
 
 	_xCurr += xMove;
