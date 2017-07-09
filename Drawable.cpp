@@ -100,7 +100,7 @@ void Drawable::draw_all()
 	int lives = 3;
 	int score = 42000;
 	Drawable *d = list;
-	draw_bar();
+	draw_bar(lives, score);
 	while (d != NULL)
 	{
 		d->draw();
