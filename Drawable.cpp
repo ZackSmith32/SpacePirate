@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Drawable.hpp"
 
+
 Drawable* Drawable::list = NULL;
 int Drawable::xmax = 0;
 int Drawable::ymax = 0;
@@ -60,14 +61,21 @@ void Drawable::draw_sprite()
 		mvprintw(getY() + i, getX(), sprite.substr(xwid * i, xwid).c_str());
 }
 
-void Drawable::draw_bar(void) {
+void Drawable::draw_bar(int lives, int score) {
 	int maxx, maxy;
 	getmaxyx(stdscr, maxy, maxx);
-	std::string bar_text;
+	std::stringstream bar_text;
+	std::stringstream lives_str;
 
+	lives_str << "lives: ";
+	for (int i = 0; i < lives; i++) {
+		// std::cout << "in lives loog" << std::endl;
+		lives_str << ("(O_O)  ");
+	}
+	// std::cout << lives << std::endl;
 	// bar_text[maxx] = {" "}
-	bar_text = "blah foo bar blah lorem ipsum";
-	mvprintw(maxy - 21, 0, bar_text.c_str());
+	bar_text << std::setw(maxx / 2) << lives_str.str() << "  ||    score: " << score;
+	mvprintw(LINES - 2, 0, bar_text.str().c_str());
 	return ;
 }
 
@@ -85,8 +93,10 @@ Drawable* Drawable::getNext()
 
 void Drawable::draw_all()
 {
+	int lives = 3;
+	int score = 42000;
 	Drawable *d = list;
-	draw_bar();
+	draw_bar(lives, score);
 	while (d)
 	{
 		d->draw();

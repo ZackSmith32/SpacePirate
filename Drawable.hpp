@@ -3,6 +3,9 @@
 
 #include <iostream>
 #include <ncurses.h>
+#include <sstream>	// std::stringstream
+#include <iomanip>	// setw (set width)
+
 
 class Drawable{
 public:
@@ -32,7 +35,6 @@ protected:
 	float xpos;
 	float ypos;
 
-
 	int xwid;
 	int ywid;
 	std::string sprite;
@@ -42,7 +44,7 @@ protected:
 	static Drawable* list;
 	Drawable* next;
 	Drawable* prev;
-	static void draw_bar();
+	static void draw_bar(int lives, int score);
 };
 
 
