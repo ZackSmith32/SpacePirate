@@ -1,3 +1,6 @@
 bullet
 *.o
 alt.cpp
+.git 
+.gitignore 
+.nfs.2005102b.568f
