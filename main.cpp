@@ -33,7 +33,7 @@ int main (void)
 		curs_set(0);
 		nodelay(stdscr, TRUE);
 		init_pair(1, COLOR_RED, COLOR_BLACK);
-		// menu();
+		menu();
 	}
 
 
