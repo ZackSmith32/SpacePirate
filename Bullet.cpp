@@ -1,3 +1,7 @@
+#include <iostream>
+#include <ncurses.h>
+#include "Bullet.hpp"
+
 Bullet::Bullet(int x, int y, int speed)
 {
 	xpos = x;

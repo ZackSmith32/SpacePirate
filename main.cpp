@@ -1,3 +1,11 @@
+#include <iostream>
+#include <ncurses.h>
+#include <unistd.h>
+#include "Player.hpp"
+#include "Drawable.hpp"
+#include "Bullet.hpp"
+
+
 int main (void)
 {
 	initscr();

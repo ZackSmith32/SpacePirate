@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Drawable.hpp"
 
 Drawable* Drawable::list = NULL;

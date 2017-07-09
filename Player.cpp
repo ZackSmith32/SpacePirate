@@ -1,6 +1,7 @@
 #include <iostream>
-#include <ncurses.h>
-#include <unistd.h>
+// #include <ncurses.h>
+// #include <unistd.h>
+#include "Player.hpp"
 
 
 Player::Player()
