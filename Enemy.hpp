@@ -10,7 +10,7 @@
 class Enemy : public Drawable {
 
 	public:
-		Enemy(int xpos, int ypos, float speed);
+		Enemy(int xpos, int ypos, int yLimit, float speed);
 		~Enemy(void);
 		Enemy & operator=(Enemy & src);
 		void move();
@@ -19,11 +19,13 @@ class Enemy : public Drawable {
 	private:
 		float _speed;
 		int _yLimit;
-		
-		int	_routineIndex;
-		int	_routineIndexMax;
-		static float _xRoutine[4];
-		static float _yRoutine[4];
+
+		int _routI;
+		int _routIMax;
+		int	_routineIndexMoves;
+		int	_routineIndexMovesMax;
+		static float _xRoutine[2][4];
+		static float _yRoutine[2][4];
 
 		float _xCurr;
 		float _yCurr;

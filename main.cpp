@@ -31,7 +31,7 @@ int main (void)
 	new Player();
 	int max_x, max_y;
 	getmaxyx(stdscr, max_y, max_x);
-	Enemy	vader(max_x / 2 , 0, 1);
+	Enemy	vader(max_x / 2 , 0, max_y - 30, 1);
 	while(1)
 	{
 		new Bullet(rand()% max_x, 0, 2, true);

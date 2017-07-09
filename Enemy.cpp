@@ -1,9 +1,12 @@
 #include <Enemy.hpp>
+#include "header.hpp"
 
-float Enemy::_xRoutine[4] = {0, 10, 0, -10};
-float Enemy::_yRoutine[4] = {10, 0, 10, 0};
+float Enemy::_xRoutine[2][4] = { {0, 10, 0, -10}, {0, 10, 0, -10} };
+float Enemy::_yRoutine[2][4] = { {10, 0, 10, 0}, {10, 0, -10, 0} };
 
 Enemy::Enemy(int x, int y, int yLimit, float speed) {
+	if (DEBUG)
+		std::cout << "DEBUG" << DEBUG << std::endl;
 	xpos = x;
 	ypos = y;
 	xwid = 3;
@@ -15,8 +18,13 @@ Enemy::Enemy(int x, int y, int yLimit, float speed) {
 	_yLimit = yLimit;
 
 	_speed = speed;
-	_routineIndex = 0;
-	_routineIndexMax = 3;
+
+	// sub routine index/max
+	_routI = 0;
+	_routIMax = 1;
+	// index within a routine
+	_routineIndexMoves = 0;
+	_routineIndexMovesMax = 3;
 	return ;
 }
 
@@ -39,13 +47,14 @@ void Enemy::draw()
 void	Enemy::move() {
 	_incrementRoutine();
 
-	float	xMove = _calcMove(_xRoutine[_routineIndex]);
-	float	yMove = _calcMove(_yRoutine[_routineIndex]);
-	if (!DEBUG) {
+	float	xMove = _calcMove(_xRoutine[_routI][_routineIndexMoves]);
+	float	yMove = _calcMove(_yRoutine[_routI][_routineIndexMoves]);
+	if (DEBUG) {
 		std::cout << "x =" << std::setw(6) << xMove;
 		std::cout << ";  y =" << std::setw(6) << yMove;
 		std::cout << std::endl << std::endl;
 		
+		std::cout << "y = " << _yCurr << std::endl;
 	}
 	moveX(xMove);
 	moveY(yMove);
@@ -67,9 +76,9 @@ float	Enemy::_calcMove(int max) {
 
 void	Enemy::_incrementRoutine(void) {
 	float	tXCurr = _xCurr;
-	float	tXMax = _xRoutine[_routineIndex];
+	float	tXMax = _xRoutine[_routI][_routineIndexMoves];
 	float	tYCurr = _yCurr;
-	float	tYMax = _yRoutine[_routineIndex];
+	float	tYMax = _yRoutine[_routI][_routineIndexMoves];
 
 	// change to positive
 	if (tXMax < 0) {
@@ -80,14 +89,23 @@ void	Enemy::_incrementRoutine(void) {
 		tYCurr *= -1;
 		tYMax *= -1;
 	}
+
+	// if enemy reaches bottome of screen
+	if (ypos >= _yLimit && _routI != _routIMax) {
+		_routI++;
+		if (_routineIndexMoves == _routineIndexMovesMax)
+			_routineIndexMoves = 0;
+		else
+			_routineIndexMoves++;
+	}
 	// see if curr has reached script val
-	if (tXCurr >= tXMax && tYCurr >= tYMax) {
+	else if (tXCurr >= tXMax && tYCurr >= tYMax) {
 		_xCurr = 0;
 		_yCurr = 0;
-		if (_routineIndex == _routineIndexMax)
-			_routineIndex = 0;
+		if (_routineIndexMoves == _routineIndexMovesMax)
+			_routineIndexMoves = 0;
 		else
-			_routineIndex++;
+			_routineIndexMoves++;
 	}
 }
 
