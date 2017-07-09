@@ -13,15 +13,24 @@ int main (void)
 	keypad(stdscr, TRUE);
 	curs_set(0);
 	nodelay(stdscr, TRUE);
-	Player p;
-	Bullet b(10, 0, 1);
+	new Player();
+	new Bullet(10, 0, 1);
+	int counter = 0;
+	int max_x, max_y;
+	getmaxyx(stdscr, max_y, max_x);
 	while(1)
 	{
+		if (counter == 5)
+		{
+			new Bullet(rand()% max_x, 0, 1);
+			counter = 0;
+		}
 		Drawable::move_all();
 		Drawable::draw_all();
 		refresh();
 		clear();
-		usleep(60);
+		counter++;
+		usleep(60000);
 	}
 	endwin();
 	return 0;

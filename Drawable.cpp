@@ -6,7 +6,22 @@ Drawable* Drawable::list = NULL;
 Drawable::Drawable()
 {
 	next = Drawable::list;
+	prev = NULL;
+	if (Drawable::list != NULL)
+		Drawable::list->prev = this;
 	Drawable::list = this;
+}
+
+Drawable::~Drawable()
+{
+	if (prev == NULL)
+		Drawable::list = next;
+	else
+	{
+		prev->next = this->next;
+		if (this->next != NULL)
+			this->next->prev = prev;
+	}
 }
 
 int Drawable::getX()

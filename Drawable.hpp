@@ -7,6 +7,7 @@
 class Drawable{
 public:
 	Drawable();
+	virtual ~Drawable();
 	int getX();
 	int getY();
 	void moveX(int delta);
@@ -22,6 +23,7 @@ protected:
 	char symbol;
 	static Drawable* list;
 	Drawable* next;
+	Drawable* prev;
 };
 
 #endif
