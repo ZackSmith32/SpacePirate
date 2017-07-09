@@ -2,14 +2,22 @@
 #include <ncurses.h>
 #include "Bullet.hpp"
 
-Bullet::Bullet(int x, int y, float x_speed, float y_speed, bool enemy)
+/*
+ *	type = 0 : star
+ *	type = 1 : player
+ *	type = 2 : enemy
+ */
+
+char Bullet::bullets[6] = ".^o+|";
+
+Bullet::Bullet(int x, int y, float x_speed, float y_speed, int type)
 {
 	xpos = x;
 	ypos = y;
 	this->x_speed = x_speed;
 	this->y_speed = y_speed;
 	this->enemy = enemy;
-	symbol = '.';
+	symbol = bullets[type];
 }
 
 void Bullet::move()

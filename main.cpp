@@ -5,6 +5,7 @@
 #include "Drawable.hpp"
 #include "Bullet.hpp"
 #include "Enemy.hpp"
+#include "header.hpp"
 
 /*
 	TODO:
@@ -14,27 +15,33 @@
 	-collision optimization (maybe)
 	-powerups
 	-color
+	-head seeking bullets
 */
+
 
 int main (void)
 {
-	initscr();
-	noecho();
-	keypad(stdscr, TRUE);
-	curs_set(0);
-	nodelay(stdscr, TRUE);
+	if (!DEBUG) {
+		initscr();
+		noecho();
+		keypad(stdscr, TRUE);
+		curs_set(0);
+		nodelay(stdscr, TRUE);		
+	}
 	new Player();
 	int max_x, max_y;
 	getmaxyx(stdscr, max_y, max_x);
-	Enemy	vader(max_x / 2 , 0, 0.25);
+	Enemy	vader(max_x / 2 , 0, max_y - 10, 1);
 	while(1)
 	{
-		new Bullet(rand()% max_x, 0, 0, 2, true);
+		new Bullet(rand()% max_x, 0, 2, 0);
 		Drawable::move_all();
 		Drawable::collide_all();
 		Drawable::draw_all();
-		refresh();
-		clear();
+		if (!DEBUG) {
+			refresh();
+			clear();			
+		}
 		usleep(60000);
 	}
 	endwin();
