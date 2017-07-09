@@ -14,12 +14,12 @@ int main (void)
 	keypad(stdscr, TRUE);
 	curs_set(0);
 	nodelay(stdscr, TRUE);
-	vader(max_x / 2, 0);
 	new Player();
 	new Bullet(10, 0, 1);
 	int counter = 0;
 	int max_x, max_y;
 	getmaxyx(stdscr, max_y, max_x);
+	Enemy	vader(max_x / 2 , 0);
 	while(1)
 	{
 		if (counter == 5)

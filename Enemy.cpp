@@ -1,7 +1,8 @@
 #include <Enemy.hpp>
 
-int Enemy::_xMoveList[4] = {0, 4, 0, -4};
-int Enemy::_yMoveList[4] = {4, 0, 4, 0};
+float i = 0.25;
+float Enemy::_xMoveList[16] = {0,0,0,0, i,i,i,i, 0,0,0,0, -i,-i,-i,-i};
+float Enemy::_yMoveList[16] = {i,i,i,i, 0,0,0,0, i,i,i,i,  0,0,0,0};
 
 Enemy::Enemy(int x, int y) {
 	xpos = x;
@@ -9,8 +10,7 @@ Enemy::Enemy(int x, int y) {
 	symbol = '+';
 
 	_moveIndex = 0;
-	_moveIndexMax = 3;
-	std::cout << "innitiated" << std::endl;
+	_moveIndexMax = 16;
 	return ;
 }
 
@@ -29,9 +29,7 @@ void	Enemy::move() {
 	moveX(_xMoveList[_moveIndex]);
 	moveY(_yMoveList[_moveIndex]);
 
-	std::cout << "x move = " << _xMoveList[_moveIndex] << std::endl;
-	std::cout << "y move = " << _yMoveList[_moveIndex] << std::endl;
-	if (_moveIndex == _moveIndexMax)
+	if (_moveIndex == _moveIndexMax - 1)
 		_moveIndex = 0;
 	else
 		_moveIndex++;
