@@ -7,10 +7,10 @@
 
 class Bullet : public Drawable{
 public:
-	Bullet(int x, int y, int speed);
+	Bullet(int x, int y, float speed);
 	void move();
 private:
-	int speed;
+	float speed;
 };
 
 #endif

@@ -35,7 +35,7 @@ int Drawable::getY()
 	return ypos;
 }
 
-void Drawable::moveX(int delta)
+void Drawable::moveX(float delta)
 {
 	int max_x, max_y;
 	getmaxyx(stdscr, max_y, max_x);
@@ -46,7 +46,7 @@ void Drawable::moveX(int delta)
 		xpos = 0;
 }
 
-void Drawable::moveY(int delta)
+void Drawable::moveY(float delta)
 {
 	int max_x, max_y;
 	getmaxyx(stdscr, max_y, max_x);
@@ -59,10 +59,7 @@ void Drawable::moveY(int delta)
 
 void Drawable::draw()
 {
-	int x, y;
-	x = getX();
-	y = getY();
-	mvaddch(y, x, symbol);
+	mvaddch(getY(), getX(), symbol);
 }
 
 void Drawable::move(){
