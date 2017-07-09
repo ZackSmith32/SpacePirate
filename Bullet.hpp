@@ -7,12 +7,13 @@
 
 class Bullet : public Drawable{
 public:
-	Bullet(int x, int y, float x_speed, float y_speed, bool enemy);
+	Bullet(int x, int y, float x_speed, float y_speed, int type);
 	void move();
 private:
 	float x_speed;
 	float y_speed;
-	bool enemy;
+	int _type;
+	static char bullets[6];
 };
 
 #endif
