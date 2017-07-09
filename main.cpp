@@ -8,10 +8,12 @@
 
 /*
 	TODO:
-	- floats for positions
-	- multi-key input
 	- enemies shoot
 	- multi-character drawables
+		-done, needs collision
+	-collision optimization (maybe)
+	-powerups
+	-color
 */
 
 int main (void)
@@ -22,23 +24,17 @@ int main (void)
 	curs_set(0);
 	nodelay(stdscr, TRUE);
 	new Player();
-	int counter = 0;
 	int max_x, max_y;
 	getmaxyx(stdscr, max_y, max_x);
 	Enemy	vader(max_x / 2 , 0, 0.25);
 	while(1)
 	{
-		if (counter == 5)
-		{
-			new Bullet(rand()% max_x, 0, 0.25);
-			counter = 0;
-		}
+		new Bullet(rand()% max_x, 0, 2, true);
 		Drawable::move_all();
 		Drawable::collide_all();
 		Drawable::draw_all();
 		refresh();
 		clear();
-		counter++;
 		usleep(60000);
 	}
 	endwin();

@@ -2,11 +2,12 @@
 #include <ncurses.h>
 #include "Bullet.hpp"
 
-Bullet::Bullet(int x, int y, float speed)
+Bullet::Bullet(int x, int y, float speed, bool enemy)
 {
 	xpos = x;
 	ypos = y;
 	this->speed = speed;
+	this->enemy = enemy;
 	symbol = '.';
 }
 

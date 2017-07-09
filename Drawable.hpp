@@ -12,6 +12,9 @@ public:
 	int getY();
 	void moveX(float delta);
 	void moveY(float delta);
+
+	void draw_sprite();
+
 	virtual void move();
 	virtual void draw();
 	void collide(Drawable *list);
@@ -22,6 +25,11 @@ public:
 protected:
 	float xpos;
 	float ypos;
+
+	int xwid;
+	int ywid;
+	std::string sprite;
+	
 	char symbol;
 	bool collided;
 	static Drawable* list;
