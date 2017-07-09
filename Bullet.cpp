@@ -1,5 +1,6 @@
 #include <iostream>
 #include <ncurses.h>
+#include <menu.h>
 #include "Bullet.hpp"
 
 /*

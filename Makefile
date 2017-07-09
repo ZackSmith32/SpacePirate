@@ -6,7 +6,7 @@
 #    By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/03 15:22:15 by zsmith            #+#    #+#              #
-#    Updated: 2017/07/08 19:36:06 by zsmith           ###   ########.fr        #
+#    Updated: 2017/07/09 10:40:22 by zsmith           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	$(CLANG) $(CXXFLAGS) $(OBJECTS) -o $@ -lncurses
+	$(CLANG) $(CXXFLAGS) $(OBJECTS) -o $@ -lncurses -lmenu
 
 %.o:%.cpp
 	$(CLANG) $(CXXFLAGS) $^ -c -o $@ -I $(HEADERS)
