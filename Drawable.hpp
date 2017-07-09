@@ -25,11 +25,11 @@ public:
 	virtual void move();
 	virtual void draw();
 	virtual void collide();
-	void collide_check(Drawable *list);
 	Drawable* getNext();
 	static void draw_all();
 	static void move_all();
 	static void collide_all();
+	static bool overlap(Drawable& a, Drawable &b);
 	static int difficulty;
 protected:
 	float xpos;

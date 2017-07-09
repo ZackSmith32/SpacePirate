@@ -18,6 +18,7 @@ OBJECTS		=	main.o 			\
 				Bullet.o		\
 				Player.o		\
 				Enemy.o			\
+				Boss.o
 
 HEADERS		=	.
 

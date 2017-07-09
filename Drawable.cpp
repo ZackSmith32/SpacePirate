@@ -118,7 +118,7 @@ void Drawable::move_all()
 	}
 }
 
-bool overlap(Drawable& a, Drawable &b)
+bool Drawable::overlap(Drawable& a, Drawable &b)
 {
 	if (a.getX() + a.getWidX() < b.getX() || \
 		b.getX() + b.getWidX() < a.getX() || \
@@ -130,31 +130,9 @@ bool overlap(Drawable& a, Drawable &b)
 
 void Drawable::collide(){}
 
-void Drawable::collide_check(Drawable *list)
-{
-	if (collided)
-		return ;
-	for(; list != NULL; list = list->next)
-	{
-		if (this == list)
-			continue ;
-		if (overlap(*this, *list))
-		{
-			collided = true;
-			list->collided = true;
-		}
-	}
-}
-
 void Drawable::collide_all()
 {
 	Drawable *d = list;
-	while (d != NULL)
-	{
-		d->collide_check(list);
-		d = d->getNext();
-	}
-	d = list;
 	while (d != NULL)
 	{
 		d->collide();

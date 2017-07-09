@@ -59,7 +59,7 @@ void	Enemy::move() {
 	}
 	moveX(xMove);
 	moveY(yMove);
-	if (rand() % 3 == 0)
+	if (rand() % 10 == 0)
 	{
 		// std::cout << "bullet made" << std::endl;
 		new  Bullet(getX() + xwid / 2, getY() + ywid + 1, 0, 1, 0);
@@ -117,8 +117,18 @@ void	Enemy::_incrementRoutine(void) {
 
 void Enemy::collide()
 {
-	if (collided)
-		delete this;
+	Drawable* d = Drawable::list;
+
+	for (; d != NULL; d = d->getNext())
+	{
+		if (d == this)
+			continue;
+		if (overlap(*this, *d))
+		{
+			delete this;
+			return;
+		}
+	}
 }
 
 

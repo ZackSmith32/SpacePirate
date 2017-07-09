@@ -33,8 +33,18 @@ void Player::move()
 
 void Player::collide()
 {
-	if (collided)
-		delete this;
+	Drawable* d = Drawable::list;
+
+	for (; d != NULL; d = d->getNext())
+	{
+		if (d == this)
+			continue;
+		if (overlap(*this, *d))
+		{
+			delete this;
+			return;
+		}
+	}
 }
 
 void Player::draw()
