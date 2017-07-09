@@ -12,11 +12,11 @@
 
 NAME		=	bullet
 
-OBJECTS		=	\
+OBJECTS		=	main.o \
 				Drawable.o		\
 				Bullet.o		\
 				Player.o		\
-				main.cpp		\
+						\
 
 HEADERS		=	.
 
@@ -27,7 +27,7 @@ CXXFLAGS	=	-Wall -Werror -Wextra -std=c++98
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	$(CLANG) $(CXXFLAGS) $(OBJECTS) -o $@
+	$(CLANG) $(CXXFLAGS) $(OBJECTS) -o $@ -lncurses
 
 %.o:%.cpp
 	$(CLANG) $(CXXFLAGS) $^ -c -o $@ -I $(HEADERS)

@@ -2,6 +2,7 @@
 # define BULLET_HPP
 
 #include <iostream>
+#include <ncurses.h>
 #include "Drawable.hpp"
 
 class Bullet : public Drawable{

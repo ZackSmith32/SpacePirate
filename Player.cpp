@@ -1,8 +1,7 @@
 #include <iostream>
-// #include <ncurses.h>
-// #include <unistd.h>
+#include <ncurses.h>
+#include <unistd.h>
 #include "Player.hpp"
-
 
 Player::Player()
 {
@@ -25,6 +24,3 @@ void Player::move()
 	else if (c == KEY_DOWN)
 		moveY(1);
 }
-
-
-

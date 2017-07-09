@@ -2,6 +2,7 @@
 # define DRAWABLE_HPP
 
 #include <iostream>
+#include <ncurses.h>
 
 class Drawable{
 public:
@@ -10,8 +11,8 @@ public:
 	int getY();
 	void moveX(int delta);
 	void moveY(int delta);
-	void move();
-	void draw();
+	virtual void move();
+	virtual void draw();
 	Drawable* getNext();
 	static void draw_all();
 	static void move_all();
