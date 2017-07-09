@@ -25,7 +25,7 @@ int main (void)
 	int counter = 0;
 	int max_x, max_y;
 	getmaxyx(stdscr, max_y, max_x);
-	Enemy	vader(max_x / 2 , 0);
+	Enemy	vader(max_x / 2 , 0, 0.25);
 	while(1)
 	{
 		if (counter == 5)

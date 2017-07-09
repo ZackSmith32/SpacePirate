@@ -4,7 +4,7 @@ float i = 0.25;
 float Enemy::_xMoveList[16] = {0,0,0,0, i,i,i,i, 0,0,0,0, -i,-i,-i,-i};
 float Enemy::_yMoveList[16] = {i,i,i,i, 0,0,0,0, i,i,i,i,  0,0,0,0};
 
-Enemy::Enemy(int x, int y) {
+Enemy::Enemy(int x, int y, float speed) {
 	xpos = x;
 	ypos = y;
 	symbol = '+';
@@ -26,8 +26,8 @@ Enemy & Enemy::operator=(Enemy & src) {
 }
 
 void	Enemy::move() {
-	moveX(_xMoveList[_moveIndex]);
-	moveY(_yMoveList[_moveIndex]);
+	moveX(_xMoveList[_moveIndex] * _speed);
+	moveY(_yMoveList[_moveIndex] * _speed);
 
 	if (_moveIndex == _moveIndexMax - 1)
 		_moveIndex = 0;

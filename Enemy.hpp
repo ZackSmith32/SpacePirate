@@ -13,10 +13,11 @@ class Enemy : public Drawable {
 		void move();
 
 	private:
+		float _speed;
 		int	_moveIndex;
 		int	_moveIndexMax;
-		static float _xMoveList[16];
-		static float _yMoveList[16];
+		static float _xMoveList[64];
+		static float _yMoveList[64];
 
 };
 
