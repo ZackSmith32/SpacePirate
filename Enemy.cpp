@@ -1,5 +1,6 @@
 #include <Enemy.hpp>
-#include "header.hpp"
+#include <header.hpp>
+#include <Bullet.hpp>
 
 float Enemy::_xRoutine[2][4] = { {0, 10, 0, -10}, {0, 10, 0, -10} };
 float Enemy::_yRoutine[2][4] = { {10, 0, 10, 0}, {10, 0, -10, 0} };
@@ -58,6 +59,11 @@ void	Enemy::move() {
 	}
 	moveX(xMove);
 	moveY(yMove);
+	if (rand() % 3 == 0)
+	{
+		// std::cout << "bullet made" << std::endl;
+		// new  Bullet(getX(), getY() - 1, 1, true);
+	}
 
 	_xCurr += xMove;
 	_yCurr += yMove;
