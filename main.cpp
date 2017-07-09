@@ -27,7 +27,7 @@ int main (void)
 	getmaxyx(stdscr, max_y, max_x);
 	while(1)
 	{
-		new Bullet(rand()% max_x, 0, 2, true);
+		new Bullet(rand()% max_x, 0, 0, 2, true);
 		Drawable::move_all();
 		Drawable::collide_all();
 		Drawable::draw_all();
