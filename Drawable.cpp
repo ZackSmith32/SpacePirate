@@ -7,6 +7,7 @@ Drawable::Drawable()
 {
 	next = Drawable::list;
 	prev = NULL;
+	collided = false;
 	if (Drawable::list != NULL)
 		Drawable::list->prev = this;
 	Drawable::list = this;
@@ -64,7 +65,13 @@ void Drawable::draw()
 	mvaddch(y, x, symbol);
 }
 
-void Drawable::move(){}
+void Drawable::move(){
+	if (collided)
+	{
+		delete this;
+		return ;
+	}
+}
 
 Drawable* Drawable::getNext()
 {
@@ -87,6 +94,32 @@ void Drawable::move_all()
 	while (d)
 	{
 		d->move();
+		d = d->getNext();
+	}
+}
+
+void Drawable::collide(Drawable *list)
+{
+	if (collided)
+		return ;
+	for(; list; list = list->next)
+	{
+		if (this == list)
+			continue ;
+		if (getX() == list->getX() && getY() == list->getY())
+		{
+			collided = true;
+			list->collided = true;
+		}
+	}
+}
+
+void Drawable::collide_all()
+{
+	Drawable *d = list;
+	while (d)
+	{
+		d->collide(list);
 		d = d->getNext();
 	}
 }

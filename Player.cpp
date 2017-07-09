@@ -14,6 +14,7 @@ Player::~Player(){}
 
 void Player::move()
 {
+	Drawable::move();
 	int c = wgetch(stdscr);
 	if (c == KEY_LEFT)
 		moveX(-2);

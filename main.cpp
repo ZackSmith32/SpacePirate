@@ -26,6 +26,7 @@ int main (void)
 			counter = 0;
 		}
 		Drawable::move_all();
+		Drawable::collide_all();
 		Drawable::draw_all();
 		refresh();
 		clear();
