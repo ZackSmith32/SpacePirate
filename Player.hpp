@@ -7,6 +7,7 @@ public:
 	Player();
 	void move();
 	void draw();
+	void collide();
 };
 
 #endif

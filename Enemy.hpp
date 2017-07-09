@@ -15,6 +15,7 @@ class Enemy : public Drawable {
 		Enemy & operator=(Enemy & src);
 		void move();
 		void draw();
+		void collide();
 
 	private:
 		float _speed;

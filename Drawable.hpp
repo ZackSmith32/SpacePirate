@@ -21,7 +21,8 @@ public:
 
 	virtual void move();
 	virtual void draw();
-	void collide(Drawable *list);
+	virtual void collide();
+	void collide_check(Drawable *list);
 	Drawable* getNext();
 	static void draw_all();
 	static void move_all();

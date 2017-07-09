@@ -9,7 +9,6 @@ Drawable::Drawable()
 {
 	next = Drawable::list;
 	prev = NULL;
-	collided = false;
 	if (Drawable::list != NULL)
 		Drawable::list->prev = this;
 	Drawable::list = this;
@@ -35,22 +34,22 @@ int Drawable::getWidY() {return ywid;}
 
 void Drawable::moveX(float delta)
 {
-	// int max_x, max_y;
-	// getmaxyx(stdscr, max_y, max_x);
+	int max_x, max_y;
+	getmaxyx(stdscr, max_y, max_x);
 	xpos += delta;
-	if (xpos >= xmax)
-		xpos = xmax - 1;
+	if (xpos + xwid >= max_x)
+		xpos = max_x - xwid;
 	if (xpos < 0)
 		xpos = 0;
 }
 
 void Drawable::moveY(float delta)
 {
-	// int max_x, max_y;
-	// getmaxyx(stdscr, max_y, max_x);
+	int max_x, max_y;
+	getmaxyx(stdscr, max_y, max_x);
 	ypos += delta;
-	if (ypos >= ymax)
-		ypos = ymax - 1;
+	if (ypos >= max_y)
+		ypos = max_y - 1;
 	if (ypos < 0)
 		ypos = 0;
 }
@@ -74,13 +73,7 @@ void Drawable::draw()
 	mvaddch(getY(), getX(), symbol);
 }
 
-void Drawable::move(){
-	if (collided)
-	{
-		delete this;
-		return ;
-	}
-}
+void Drawable::move(){}
 
 Drawable* Drawable::getNext()
 {
@@ -118,7 +111,9 @@ bool overlap(Drawable& a, Drawable &b)
 	return true;
 }
 
-void Drawable::collide(Drawable *list)
+void Drawable::collide(){}
+
+void Drawable::collide_check(Drawable *list)
 {
 	if (collided)
 		return ;
@@ -139,7 +134,13 @@ void Drawable::collide_all()
 	Drawable *d = list;
 	while (d)
 	{
-		d->collide(list);
+		d->collide_check(list);
+		d = d->getNext();
+	}
+	d = list;
+	while (d)
+	{
+		d->collide();
 		d = d->getNext();
 	}
 }
