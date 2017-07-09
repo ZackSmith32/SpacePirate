@@ -25,23 +25,19 @@ Drawable::~Drawable()
 	}
 }
 
-int Drawable::getX()
-{
-	return xpos;
-}
+int Drawable::getX() {return xpos;}
+int Drawable::getY() {return ypos;}
 
-int Drawable::getY()
-{
-	return ypos;
-}
+int Drawable::getWidX() {return xwid;}
+int Drawable::getWidY() {return ywid;}
 
 void Drawable::moveX(float delta)
 {
 	int max_x, max_y;
 	getmaxyx(stdscr, max_y, max_x);
 	xpos += delta;
-	if (xpos >= max_x)
-		xpos = max_x - 1;
+	if (xpos + xwid >= max_x)
+		xpos = max_x - xwid;
 	if (xpos < 0)
 		xpos = 0;
 }
@@ -101,6 +97,16 @@ void Drawable::move_all()
 	}
 }
 
+bool overlap(Drawable& a, Drawable &b)
+{
+	if (a.getX() + a.getWidX() < b.getX() || \
+		b.getX() + b.getWidX() < a.getX() || \
+		a.getY() + a.getWidY() < b.getY() || \
+		b.getY() + b.getWidY() < a.getY())
+		return false;
+	return true;
+}
+
 void Drawable::collide(Drawable *list)
 {
 	if (collided)
@@ -109,7 +115,7 @@ void Drawable::collide(Drawable *list)
 	{
 		if (this == list)
 			continue ;
-		if (getX() == list->getX() && getY() == list->getY())
+		if (overlap(*this, *list))
 		{
 			collided = true;
 			list->collided = true;

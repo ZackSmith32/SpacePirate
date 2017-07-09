@@ -19,6 +19,8 @@ Bullet::Bullet(int x, int y, float x_speed, float y_speed, int type)
 	this->y_speed = y_speed;
 	_type = type;
 	symbol = bullets[type];
+	xwid = 1;
+	ywid = 1;
 }
 
 void Bullet::move()
@@ -30,6 +32,6 @@ void Bullet::move()
 	getmaxyx(stdscr, max_y, max_x);
 	if (getY() == max_y - 1)
 		delete this;
-	if (getY() == 0)
+	else if (getY() == 0)
 		delete this;
 }

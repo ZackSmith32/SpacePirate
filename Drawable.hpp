@@ -10,6 +10,8 @@ public:
 	virtual ~Drawable();
 	int getX();
 	int getY();
+	int getWidX();
+	int getWidY();
 	void moveX(float delta);
 	void moveY(float delta);
 

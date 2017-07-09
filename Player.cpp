@@ -9,16 +9,14 @@ Player::Player()
 	xpos = 15;
 	ypos = 15;
 	symbol = '*';
-	sprite = " ^ / \\";
+	sprite = " ^ /x\\";
 	xwid = 3;
 	ywid = 2;
 }
 
-Player::~Player(){}
-
 void Player::move()
 {
-	Drawable::move();
+	//Drawable::move();
 	int c = wgetch(stdscr);
 	if (c == KEY_LEFT)
 		moveX(-2);
@@ -29,7 +27,7 @@ void Player::move()
 	else if (c == KEY_DOWN)
 		moveY(1);
 	else if (c == ' ')
-		new Bullet(getX(), getY() - 1, 0.25, -1, 1); //needs to be centered
+		new Bullet(getX() + 1, getY() - 2, 0.25 * (rand()%3 - 1), -1, false);
 }
 
 void Player::draw()

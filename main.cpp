@@ -125,7 +125,7 @@ int main (void)
 	new Player();
 	while(1)
 	{
-		new Bullet(rand()% max_x, 0, 1, 0, 0);
+		new Bullet(rand() % max_x, 0, 0, 1, true);
 		Drawable::move_all();
 		Drawable::collide_all();
 		Drawable::draw_all();
