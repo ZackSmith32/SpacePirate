@@ -1,16 +1,24 @@
 #include <Enemy.hpp>
 
 float i = 0.25;
-float Enemy::_xMoveList[16] = {0,0,0,0, i,i,i,i, 0,0,0,0, -i,-i,-i,-i};
-float Enemy::_yMoveList[16] = {i,i,i,i, 0,0,0,0, i,i,i,i,  0,0,0,0};
-
-Enemy::Enemy(int x, int y) {
+float Enemy::_xMoveList[64] = {
+								0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+								i,i,i,i,i,i,i,i,i,i,i,i,i,i,i,i, 
+								0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 
+								-i,-i,-i,-i,-i,-i,-i,-i,-i,-i,-i,-i,-i,-i,-i,-i
+								};
+float Enemy::_yMoveList[64] = {	i,i,i,i,i,i,i,i,i,i,i,i,i,i,i,i, 
+								0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0, 
+								i,i,i,i,i,i,i,i,i,i,i,i,i,i,i,i, 
+								0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+								};
+Enemy::Enemy(int x, int y, float speed) {
 	xpos = x;
 	ypos = y;
 	symbol = '+';
 
 	_moveIndex = 0;
-	_moveIndexMax = 16;
+	_moveIndexMax = 4 * 16;
 	return ;
 }
 
