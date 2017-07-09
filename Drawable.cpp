@@ -62,10 +62,13 @@ void Drawable::draw_sprite()
 }
 
 void Drawable::draw_bar(void) {
+	int maxx, maxy;
+	getmaxyx(stdscr, maxy, maxx);
 	std::string bar_text;
 
+	bar_text[maxx] = {" "}
 	bar_text = "blah foo bar blah lorem ipsum";
-	mvprintw(ymax - 21, 0, bar_text.c_str());
+	mvprintw(maxy - 21, 0, bar_text.c_str());
 	return ;
 }
 

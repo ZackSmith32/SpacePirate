@@ -6,13 +6,14 @@
 #    By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/03 15:22:15 by zsmith            #+#    #+#              #
-#    Updated: 2017/07/09 10:40:22 by zsmith           ###   ########.fr        #
+#    Updated: 2017/07/09 14:44:38 by zsmith           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	bullet
 
 OBJECTS		=	main.o 			\
+				menu.o			\
 				Drawable.o		\
 				Bullet.o		\
 				Player.o		\

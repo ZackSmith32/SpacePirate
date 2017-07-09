@@ -62,7 +62,7 @@ void	Enemy::move() {
 	if (rand() % 3 == 0)
 	{
 		// std::cout << "bullet made" << std::endl;
-		// new  Bullet(getX(), getY() - 1, 1, true);
+		// new  Bullet(getX(), getY() - 1, 0, -1, 3);
 	}
 
 	_xCurr += xMove;
