@@ -8,7 +8,7 @@
  *	type = 2 : enemy
  */
 
-char bullets[5] = {'.', '^', 'o', '+', '|'};
+char Bullet::bullets[6] = ".^o+|";
 
 Bullet::Bullet(int x, int y, float speed, int type)
 {

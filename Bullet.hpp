@@ -11,7 +11,7 @@ public:
 	void move();
 private:
 	float speed;
-	char bullets[5];
+	static char bullets[6];
 };
 
 #endif
