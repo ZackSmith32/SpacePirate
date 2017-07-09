@@ -6,17 +6,17 @@
 #    By: zsmith <zsmith@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/03 15:22:15 by zsmith            #+#    #+#              #
-#    Updated: 2017/07/08 17:15:33 by zsmith           ###   ########.fr        #
+#    Updated: 2017/07/08 19:36:06 by zsmith           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	bullet
 
-OBJECTS		=	main.o \
+OBJECTS		=	main.o 			\
 				Drawable.o		\
 				Bullet.o		\
 				Player.o		\
-						\
+				Enemy.o			\
 
 HEADERS		=	.
 

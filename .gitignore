@@ -1,1 +1,3 @@
 bullet
+*.o
+alt.cpp
