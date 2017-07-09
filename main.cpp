@@ -6,6 +6,13 @@
 #include "Bullet.hpp"
 #include "Enemy.hpp"
 
+/*
+	TODO:
+	- floats for positions
+	- multi-key input
+	- enemies shoot
+	- multi-character drawables
+*/
 
 int main (void)
 {
@@ -15,7 +22,6 @@ int main (void)
 	curs_set(0);
 	nodelay(stdscr, TRUE);
 	new Player();
-	new Bullet(10, 0, 1);
 	int counter = 0;
 	int max_x, max_y;
 	getmaxyx(stdscr, max_y, max_x);
@@ -24,7 +30,7 @@ int main (void)
 	{
 		if (counter == 5)
 		{
-			new Bullet(rand()% max_x, 0, 1);
+			new Bullet(rand()% max_x, 0, 0.25);
 			counter = 0;
 		}
 		Drawable::move_all();

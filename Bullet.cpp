@@ -2,7 +2,7 @@
 #include <ncurses.h>
 #include "Bullet.hpp"
 
-Bullet::Bullet(int x, int y, int speed)
+Bullet::Bullet(int x, int y, float speed)
 {
 	xpos = x;
 	ypos = y;

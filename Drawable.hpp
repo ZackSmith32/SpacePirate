@@ -10,8 +10,8 @@ public:
 	virtual ~Drawable();
 	int getX();
 	int getY();
-	void moveX(int delta);
-	void moveY(int delta);
+	void moveX(float delta);
+	void moveY(float delta);
 	virtual void move();
 	virtual void draw();
 	void collide(Drawable *list);
@@ -20,8 +20,8 @@ public:
 	static void move_all();
 	static void collide_all();
 protected:
-	int xpos;
-	int ypos;
+	float xpos;
+	float ypos;
 	char symbol;
 	bool collided;
 	static Drawable* list;

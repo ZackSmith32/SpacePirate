@@ -1,6 +1,7 @@
 #include <iostream>
 #include <ncurses.h>
 #include <unistd.h>
+#include "Bullet.hpp"
 #include "Player.hpp"
 
 Player::Player()
@@ -24,4 +25,6 @@ void Player::move()
 		moveY(-1);
 	else if (c == KEY_DOWN)
 		moveY(1);
+	else if (c == ' ')
+		new Bullet(getX(), getY() - 1, -1);
 }
