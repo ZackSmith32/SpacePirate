@@ -14,12 +14,11 @@
 	- menu
 		- high scores file
 		- text input name
-	- multi-character drawables
-		-done, needs collision
-	-collision optimization (maybe)
+	-collision optimization
 	-powerups
 	-color
 	-head seeking bullets
+	-move, draw, collide all pure virtual functions
 */
 
 int main (void)
@@ -37,12 +36,12 @@ int main (void)
 		// menu();
 	}
 
+
 	new Enemy(max_x / 2 , 0, max_y - 20, 1);
 	new Player();
 	while(1)
 	{
-		std::cout << "yo" << std::endl;
-		new Bullet(rand() % max_x, 0, 0, 1, true);
+		//new Bullet(rand() % max_x, 0, 0, 1, 1);
 		Drawable::move_all();
 		Drawable::collide_all();
 		Drawable::draw_all();

@@ -9,6 +9,7 @@ class Bullet : public Drawable{
 public:
 	Bullet(int x, int y, float x_speed, float y_speed, int type);
 	void move();
+	void collide();
 private:
 	float x_speed;
 	float y_speed;

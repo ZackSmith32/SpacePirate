@@ -23,9 +23,10 @@ Bullet::Bullet(int x, int y, float x_speed, float y_speed, int type)
 	ywid = 1;
 }
 
+void Bullet::collide(){}
+
 void Bullet::move()
 {
-	Drawable::move();
 	moveX(x_speed);
 	moveY(y_speed);
 	int max_x, max_y;
