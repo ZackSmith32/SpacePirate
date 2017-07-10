@@ -21,8 +21,6 @@ Player::~Player() {
 	Drawable::setPlayerAlive();
 }
 
-Player::~Player(){}
-
 Player& Player::operator=(Player& src)
 {
 	xpos = src.xpos;
