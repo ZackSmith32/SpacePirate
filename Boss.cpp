@@ -40,13 +40,13 @@ void Boss::draw(){
 }
 void Boss::move()
 {
-	if (counter < 8)
-		moveX(-1);
+	if (counter < 32)
+		moveX(-1 / 6);
 	else
-		moveX(1);
-	if (counter % 4 == 0)
+		moveX(1 / 6);
+	if (counter % 16 == 0)
 		shoot_line();
-	if (counter == 15)
+	if (counter == 63)
 	{
 		shoot_bloom();
 		counter = -1;
@@ -63,6 +63,7 @@ void Boss::collide()
 			continue;
 		if (overlap(*this, *d))
 		{
+			delete d;
 			delete this;
 			return;
 		}
@@ -73,7 +74,7 @@ void Boss::shoot_bloom()
 {
 	for (int i = 0; i < BLOOM_COUNT; i++)
 	{
-		float vel = 1;
+		float vel = 0.25;
 		float rad = 7;
 		float theta = (float)i * 2 * M_PI / BLOOM_COUNT;
 		float px = rad * sin(theta);
@@ -86,5 +87,5 @@ void Boss::shoot_bloom()
 void Boss::shoot_line()
 {
 	for (int i = 0; i < getWidX(); i++)
-		new Bullet(getX() + i, getY() + getWidY() + 1, 0, 1, 1);
+		new Bullet(getX() + i, getY() + getWidY() + 1, 0, .25, 1);
 }

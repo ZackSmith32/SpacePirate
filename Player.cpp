@@ -49,7 +49,7 @@ void Player::move()
 	else if (c == KEY_DOWN)
 		moveY(1);
 	else if (c == ' ')
-		new Bullet(getX() + 1, getY() - 2, 0.25 * (rand()%3 - 1), -1, false);
+		new Bullet(getX() + 1, getY() - 2, 0.25 * (rand()%3 - 1), -2, false);
 }
 
 void Player::collide()
@@ -64,7 +64,8 @@ void Player::collide()
 		{
 			Drawable::setPlayerLives(Drawable::getPlayerLives() - 1);
 			this->decrementLives();
-			if (this->lives == 0)
+			delete d;
+			if (this->Drawable::getPlayerLives() == 0)
 				delete this;
 			return;
 		}

@@ -10,17 +10,12 @@
 #include "header.hpp"
 
 /*
-	TODO:
-	- menu
-		- high scores file
-		- text input name
-	-collision where only players and enemies check themselves
-	-powerups
-	-color
-	-head seeking bullets
-	-move, draw, collide all pure virtual functions
+	final checklist:
+	enemies, boss, enemies, boss, etc
+	investigate better timing system
+	key repeat issue (?)
+	timer improvement
 */
-
 
 int main (void)
 {
@@ -36,7 +31,6 @@ int main (void)
 	int max_x;
 	int max_y;
 	getmaxyx(stdscr, max_y, max_x);
-	// new Enemy(max_x / 2 , 0, max_y - 20, 1);
 	new Boss(max_x / 2, 10);
 	new Player();
 	while(Drawable::getPlayerAlive())
@@ -48,7 +42,7 @@ int main (void)
 			refresh();
 			clear();			
 		}
-		usleep(60000);
+		usleep(16666);
 	}
 	endwin();
 	return 0;
