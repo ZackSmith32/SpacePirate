@@ -12,5 +12,8 @@ public:
 private:
 	void shoot_bloom();
 	void shoot_line();
+	int counter;
+	int centerx;
+	int centery;
 };
 

@@ -35,4 +35,8 @@ void Bullet::move()
 		delete this;
 	else if (getY() == 0)
 		delete this;
+	else if (getX() == 0)
+		delete this;
+	else if (getX() == max_x - 1)
+		delete this;
 }
