@@ -69,7 +69,7 @@ void Drawable::draw_sprite()
 
 void Drawable::draw_bar(void) {
 	int maxx, maxy;
-	int score = 42000;
+	// int score = 42000;
 	int lives = Drawable::getPlayerLives();
 	getmaxyx(stdscr, maxy, maxx);
 	std::stringstream bar_text;
@@ -79,7 +79,8 @@ void Drawable::draw_bar(void) {
 	// for (int i = 0; i < lives; i++) {
 	// 	lives_str << ("(O_O)  ");
 	// }
-	bar_text << std::setw(maxx / 2) << lives_str.str() << "  ||    score: " << score;
+	bar_text << std::setw(maxx / 2) << lives_str.str();
+	// << "  ||    score: " << score;
 	mvprintw(LINES - 2, 0, bar_text.str().c_str());
 	return ;
 }

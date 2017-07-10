@@ -28,7 +28,7 @@ void	menu(void) {
 	my_menu = new_menu((ITEM **)my_items);
 	
 	/* Menu size and location */
-	my_menu_win = newwin(10, 40, max_x / 4, max_y / 4);
+	my_menu_win = newwin(10, 40, max_y / 2 - 20, max_x / 3);
 	keypad(my_menu_win, TRUE);
 
 	/* Set main window and sub window */
