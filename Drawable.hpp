@@ -15,13 +15,21 @@ public:
 	int getY();
 	int getWidX();
 	int getWidY();
+	unsigned int lives;
 	static int	xmax;
 	static int	ymax;
 	void moveX(float delta);
 	void moveY(float delta);
+	static int difficulty;
+	static bool playerAlive;
+	static int playerLives;
 
+	static void setPlayerLives(int lives);
+	static int getPlayerLives();
+	static bool getPlayerAlive();
+	static void setPlayerAlive();
 	void draw_sprite();
-
+	void decrementLives();
 	virtual void move();
 	virtual void draw();
 	virtual void collide();
@@ -30,7 +38,6 @@ public:
 	static void move_all();
 	static void collide_all();
 	static bool overlap(Drawable& a, Drawable &b);
-	static int difficulty;
 protected:
 	float xpos;
 	float ypos;
@@ -44,7 +51,8 @@ protected:
 	static Drawable* list;
 	Drawable* next;
 	Drawable* prev;
-	static void draw_bar(int lives, int score);
+	static void draw_bar(void);
+	// static void togglePlayerAlive(void);
 };
 
 

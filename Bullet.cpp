@@ -21,6 +21,7 @@ Bullet::Bullet(int x, int y, float x_speed, float y_speed, int type)
 	symbol = bullets[type];
 	xwid = 1;
 	ywid = 1;
+	lives = 1;
 }
 
 Bullet::Bullet(){}

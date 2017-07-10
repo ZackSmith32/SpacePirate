@@ -19,6 +19,7 @@ Enemy::Enemy(int x, int y, int yLimit, float speed) {
 	_yLimit = yLimit;
 
 	_speed = speed;
+	lives = 1;
 
 	// sub routine index/max
 	_routI = 0;

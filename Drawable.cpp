@@ -5,6 +5,8 @@
 Drawable* Drawable::list = NULL;
 int Drawable::xmax = 0;
 int Drawable::ymax = 0;
+bool Drawable::playerAlive = true;
+int Drawable::playerLives = 0;
 
 Drawable::Drawable()
 {
@@ -65,19 +67,18 @@ void Drawable::draw_sprite()
 		mvprintw(getY() + i, getX(), sprite.substr(xwid * i, xwid).c_str());
 }
 
-void Drawable::draw_bar(int lives, int score) {
+void Drawable::draw_bar(void) {
 	int maxx, maxy;
+	int score = 42000;
+	int lives = Drawable::getPlayerLives();
 	getmaxyx(stdscr, maxy, maxx);
 	std::stringstream bar_text;
 	std::stringstream lives_str;
 
-	lives_str << "lives: ";
-	for (int i = 0; i < lives; i++) {
-		// std::cout << "in lives loog" << std::endl;
-		lives_str << ("(O_O)  ");
-	}
-	// std::cout << lives << std::endl;
-	// bar_text[maxx] = {" "}
+	lives_str << "lives: " << lives;
+	// for (int i = 0; i < lives; i++) {
+	// 	lives_str << ("(O_O)  ");
+	// }
 	bar_text << std::setw(maxx / 2) << lives_str.str() << "  ||    score: " << score;
 	mvprintw(LINES - 2, 0, bar_text.str().c_str());
 	return ;
@@ -97,10 +98,9 @@ Drawable* Drawable::getNext()
 
 void Drawable::draw_all()
 {
-	int lives = 3;
-	int score = 42000;
+	
 	Drawable *d = list;
-	draw_bar(lives, score);
+	draw_bar();
 	while (d != NULL)
 	{
 		d->draw();
@@ -139,3 +139,52 @@ void Drawable::collide_all()
 		d = d->getNext();
 	}
 }
+
+void Drawable::decrementLives() {
+	lives--;
+}
+
+bool Drawable::getPlayerAlive(void) {
+	return (playerAlive);
+}
+
+void Drawable::setPlayerAlive(void) {
+	playerAlive = false;
+}
+
+int Drawable::getPlayerLives(void) {
+	return (playerLives);
+}
+
+void Drawable::setPlayerLives(int lives) {
+	playerLives = lives;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -21,6 +21,7 @@
 	-move, draw, collide all pure virtual functions
 */
 
+
 int main (void)
 {
 	if (!DEBUG) {
@@ -35,9 +36,10 @@ int main (void)
 	int max_x;
 	int max_y;
 	getmaxyx(stdscr, max_y, max_x);
+	// new Enemy(max_x / 2 , 0, max_y - 20, 1);
 	new Boss(max_x / 2, 10);
 	new Player();
-	while(1)
+	while(Drawable::getPlayerAlive())
 	{
 		Drawable::move_all();
 		Drawable::collide_all();

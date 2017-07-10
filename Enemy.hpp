@@ -18,6 +18,7 @@ class Enemy : public Drawable {
 		void draw();
 		void collide();
 
+
 	private:
 		float _speed;
 		int _yLimit;

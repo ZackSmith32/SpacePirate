@@ -13,6 +13,12 @@ Player::Player()
 	sprite = " ^ /x\\";
 	xwid = 3;
 	ywid = 2;
+	lives = 4;
+	Drawable::setPlayerLives(3);
+}
+
+Player::~Player() {
+	Drawable::setPlayerAlive();
 }
 
 Player::~Player(){}
@@ -58,7 +64,10 @@ void Player::collide()
 			continue;
 		if (overlap(*this, *d))
 		{
-			delete this;
+			Drawable::setPlayerLives(Drawable::getPlayerLives() - 1);
+			this->decrementLives();
+			if (this->lives == 0)
+				delete this;
 			return;
 		}
 	}
@@ -68,3 +77,4 @@ void Player::draw()
 {
 	draw_sprite();
 }
+
