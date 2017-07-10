@@ -11,6 +11,7 @@ public:
 	void move();
 	void draw();
 	void collide();
+	void erase();
 };
 
 #endif

@@ -29,14 +29,17 @@ public:
 	static bool getPlayerAlive();
 	static void setPlayerAlive();
 	void draw_sprite();
+	void erase_sprite();
 	void decrementLives();
 	virtual void move();
 	virtual void draw();
 	virtual void collide();
+	virtual void erase();
 	Drawable* getNext();
 	static void draw_all();
 	static void move_all();
 	static void collide_all();
+	static void erase_all();
 	static bool overlap(Drawable& a, Drawable &b);
 protected:
 	float xpos;

@@ -51,20 +51,21 @@ int main (void)
 					new Boss(max_x / 2, 0, 15 + difficulty);
 				else
 				{
-					new Boss(max_x / 4, 0, 15 + difficulty);
-					new Boss(max_x / 2, 0, 15 + difficulty);
-					new Boss(max_x * 3 / 4, 0, 15 + difficulty);
+					new Boss(max_x / 4, 0, 15 + 3 * difficulty);
+					new Boss(max_x / 2, 0, 15 + 3 * difficulty);
+					new Boss(max_x * 3 / 4, 0, 15 + 3 * difficulty);
 				}
 				wavecount = waves_per_boss;
 				difficulty += 1;
 			}
 		}
+		Drawable::erase_all();
 		Drawable::move_all();
 		Drawable::collide_all();
 		Drawable::draw_all();
 		if (!DEBUG) {
 			refresh();
-			clear();			
+			//clear();			
 		}
 		usleep(16666);
 	}

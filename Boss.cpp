@@ -44,6 +44,12 @@ Boss& Boss::operator=(Boss & src)
 void Boss::draw(){
 	draw_sprite();
 }
+
+void Boss::erase()
+{
+	erase_sprite();
+}
+
 void Boss::move()
 {
 	if (counter < 32)
@@ -57,6 +63,7 @@ void Boss::move()
 		shoot_bloom();
 		counter = -1;
 	}
+	moveY(0.05);
 	counter++;
 }
 void Boss::collide()

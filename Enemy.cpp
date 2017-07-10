@@ -65,6 +65,11 @@ void Enemy::draw()
 	draw_sprite();
 }
 
+void Enemy::erase()
+{
+	erase_sprite();
+}
+
 void	Enemy::move() {
 	_incrementRoutine();
 

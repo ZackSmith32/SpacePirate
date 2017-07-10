@@ -81,3 +81,11 @@ void Player::draw()
 	mvaddch(getY(), getX() - 1, '/');
 	mvaddch(getY(), getX() + 1, '\\');
 }
+
+void Player::erase()
+{
+	erase_sprite();
+	mvaddch(getY() - 1, getX(), ' ');
+	mvaddch(getY(), getX() - 1, ' ');
+	mvaddch(getY(), getX() + 1, ' ');
+}

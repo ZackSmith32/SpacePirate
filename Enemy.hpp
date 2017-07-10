@@ -17,6 +17,7 @@ class Enemy : public Drawable {
 		void move();
 		void draw();
 		void collide();
+		void erase();
 		static void setEnemiesAlive(int count);
 		static int getEnemiesAlive();
 

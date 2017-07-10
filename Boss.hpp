@@ -15,6 +15,7 @@ public:
 	void move();
 	void draw();
 	void collide();
+	void erase();
 private:
 	void shoot_bloom();
 	void shoot_line();

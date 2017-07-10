@@ -85,6 +85,11 @@ void Drawable::draw_bar(void) {
 	return ;
 }
 
+void Drawable::erase()
+{
+	mvaddch(getY(), getX(), ' ');
+}
+
 void Drawable::draw()
 {
 	mvaddch(getY(), getX(), symbol);
@@ -99,7 +104,6 @@ Drawable* Drawable::getNext()
 
 void Drawable::draw_all()
 {
-	
 	Drawable *d = list;
 	draw_bar();
 	while (d != NULL)
@@ -162,12 +166,22 @@ void Drawable::setPlayerLives(int lives) {
 }
 
 
+void Drawable::erase_sprite()
+{
+	for (int i = 0; i < ywid; i++)
+		for (int j = 0; j < xwid; j++)
+			mvaddch(getY() + i, getX() + j, ' ');
+}
 
-
-
-
-
-
+void Drawable::erase_all()
+{
+	Drawable *d = list;
+	while (d != NULL)
+	{
+		d->erase();
+		d = d->getNext();
+	}
+}
 
 
 
