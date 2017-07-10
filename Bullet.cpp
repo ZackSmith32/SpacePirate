@@ -23,6 +23,27 @@ Bullet::Bullet(int x, int y, float x_speed, float y_speed, int type)
 	ywid = 1;
 }
 
+Bullet::Bullet(){}
+Bullet::~Bullet(){}
+
+Bullet& Bullet::operator=(Bullet& src)
+{
+	xpos = src.xpos;
+	ypos = src.ypos;
+	x_speed = src.x_speed;
+	y_speed = src.y_speed;
+	_type = src._type;
+	symbol = src.symbol;
+	xwid = src.xwid;
+	ywid = src.ywid;
+	return *this;
+}
+
+Bullet::Bullet(Bullet& rhs)
+{
+	*this = rhs;
+}
+
 void Bullet::collide(){}
 
 void Bullet::move()

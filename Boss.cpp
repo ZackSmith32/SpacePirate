@@ -9,11 +9,30 @@ Boss::Boss(int xpos, int ypos)
 	this->xpos = xpos;
 	this->ypos = ypos;
 	counter = 0;
-	sprite = "/   \\|0 0|| ^ |\\   /|+++|";
+	sprite = "/---\\|0 0|| ^ |\\ = / |_| ";
 	xwid = 5;
 	ywid = 5;
 	centerx = 2;
 	centery = 2;
+}
+
+Boss::~Boss(){}
+
+Boss::Boss(Boss& rhs)
+{
+	*this = rhs;
+}
+
+Boss& Boss::operator=(Boss & src)
+{
+	xpos = src.xpos;
+	ypos = src.ypos;
+	counter = src.counter;
+	sprite = src.sprite;
+	xwid = src.xwid;
+	centerx = src.centerx;
+	centery = src.centery;
+	return *this;
 }
 
 void Boss::draw(){
@@ -54,7 +73,7 @@ void Boss::shoot_bloom()
 {
 	for (int i = 0; i < BLOOM_COUNT; i++)
 	{
-		float vel = 2;
+		float vel = 1;
 		float rad = 7;
 		float theta = (float)i * 2 * M_PI / BLOOM_COUNT;
 		float px = rad * sin(theta);
@@ -67,5 +86,5 @@ void Boss::shoot_bloom()
 void Boss::shoot_line()
 {
 	for (int i = 0; i < getWidX(); i++)
-		new Bullet(getX() + i, getY() + getWidY() + 1, 0, 2, 1);
+		new Bullet(getX() + i, getY() + getWidY() + 1, 0, 1, 1);
 }

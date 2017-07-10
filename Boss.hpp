@@ -4,6 +4,10 @@
 
 class Boss : public Drawable {
 public:
+	Boss();
+	~Boss();
+	Boss& operator=(Boss & src);
+	Boss(Boss& rhs);
 	Boss(int xpos, int ypos);
 
 	void move();

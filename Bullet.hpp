@@ -8,6 +8,10 @@
 class Bullet : public Drawable{
 public:
 	Bullet(int x, int y, float x_speed, float y_speed, int type);
+	Bullet();
+	~Bullet();
+	Bullet& operator=(Bullet& src);
+	Bullet(Bullet& rhs);
 	void move();
 	void collide();
 private:

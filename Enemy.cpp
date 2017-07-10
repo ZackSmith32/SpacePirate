@@ -29,15 +29,29 @@ Enemy::Enemy(int x, int y, int yLimit, float speed) {
 	return ;
 }
 
-// Enemy::~Enemy(void) {
-// 	return ;
-// }
+Enemy::~Enemy() {}
 
 Enemy & Enemy::operator=(Enemy & src) {
-	if (this == &src)
-		return (*this);
-
+	xpos = src.xpos;
+	ypos = src.ypos;
+	xwid = src.xwid;
+	ywid = src.ywid;
+	_xCurr = src._xCurr;
+	_yCurr = src._yCurr;
+	sprite = src.sprite;
+	symbol = src.symbol;
+	_yLimit = src. _yLimit;
+	_speed = src._speed;
+	_routI = src._routI;
+	_routIMax = src._routIMax;
+	_routineIndexMoves = src._routineIndexMoves;
+	_routineIndexMovesMax = src._routineIndexMovesMax;
 	return (*this);
+}
+
+Enemy::Enemy(Enemy& rhs)
+{
+	*this = rhs;
 }
 
 void Enemy::draw()

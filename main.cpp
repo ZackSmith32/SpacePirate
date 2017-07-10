@@ -35,12 +35,10 @@ int main (void)
 	int max_x;
 	int max_y;
 	getmaxyx(stdscr, max_y, max_x);
-	//new Enemy(max_x / 2 , 0, max_y - 20, 1);
 	new Boss(max_x / 2, 10);
 	new Player();
 	while(1)
 	{
-		//new Bullet(rand() % max_x, 0, 0, 1, 0);
 		Drawable::move_all();
 		Drawable::collide_all();
 		Drawable::draw_all();

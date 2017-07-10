@@ -15,6 +15,23 @@ Player::Player()
 	ywid = 2;
 }
 
+Player::~Player(){}
+
+Player& Player::operator=(Player& src)
+{
+	xpos = src.xpos;
+	ypos = src.ypos;
+	symbol = src.symbol;
+	sprite = src.sprite;
+	xwid = src.xwid;
+	ywid = src.ywid;
+	return *this;
+}
+Player::Player(Player& rhs)
+{
+	*this = rhs;
+}
+
 void Player::move()
 {
 	Drawable::move();

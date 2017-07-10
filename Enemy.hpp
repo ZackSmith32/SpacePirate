@@ -11,8 +11,9 @@ class Enemy : public Drawable {
 
 	public:
 		Enemy(int xpos, int ypos, int yLimit, float speed);
-		//~Enemy(void);
+		~Enemy(void);
 		Enemy & operator=(Enemy & src);
+		Enemy(Enemy& rhs);
 		void move();
 		void draw();
 		void collide();
