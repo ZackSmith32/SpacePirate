@@ -4,6 +4,7 @@
 
 float Enemy::_xRoutine[2][4] = { {0, 10, 0, -10}, {0, 10, 0, -10} };
 float Enemy::_yRoutine[2][4] = { {10, 0, 10, 0}, {10, 0, -10, 0} };
+int Enemy::enemies_alive = 0;
 
 Enemy::Enemy(int x, int y, int yLimit, float speed) {
 	if (DEBUG)
@@ -27,10 +28,14 @@ Enemy::Enemy(int x, int y, int yLimit, float speed) {
 	// index within a routine
 	_routineIndexMoves = 0;
 	_routineIndexMovesMax = 3;
+	setEnemiesAlive(getEnemiesAlive() + 1);
 	return ;
 }
 
-Enemy::~Enemy() {}
+Enemy::~Enemy() 
+{
+	setEnemiesAlive(getEnemiesAlive() - 1);
+}
 
 Enemy & Enemy::operator=(Enemy & src) {
 	xpos = src.xpos;
@@ -77,7 +82,7 @@ void	Enemy::move() {
 	if (rand() % 10 == 0)
 	{
 		// std::cout << "bullet made" << std::endl;
-		new  Bullet(getX() + xwid / 2, getY() + ywid + 1, 0, 1, 0);
+		new  Bullet(getX() + xwid / 2, getY() + ywid + 2, 0, 0.5, 1);
 	}
 
 	_xCurr += xMove;
@@ -146,32 +151,12 @@ void Enemy::collide()
 	}
 }
 
+int Enemy::getEnemiesAlive()
+{
+	return enemies_alive;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+void Enemy::setEnemiesAlive(int count)
+{
+	enemies_alive = count;
+}

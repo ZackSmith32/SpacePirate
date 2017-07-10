@@ -8,8 +8,10 @@ public:
 	~Boss();
 	Boss& operator=(Boss & src);
 	Boss(Boss& rhs);
-	Boss(int xpos, int ypos);
+	Boss(int xpos, int ypos, int difficulty);
 
+	static void setBossesAlive(int count);
+	static int getBossesAlive();
 	void move();
 	void draw();
 	void collide();
@@ -19,5 +21,7 @@ private:
 	int counter;
 	int centerx;
 	int centery;
+	int health;
+	static int bosses_alive;
 };
 

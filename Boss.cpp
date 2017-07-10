@@ -4,7 +4,9 @@
 
 #define BLOOM_COUNT 25
 
-Boss::Boss(int xpos, int ypos)
+int Boss::bosses_alive = 0;
+
+Boss::Boss(int xpos, int ypos, int health)
 {
 	this->xpos = xpos;
 	this->ypos = ypos;
@@ -14,9 +16,13 @@ Boss::Boss(int xpos, int ypos)
 	ywid = 5;
 	centerx = 2;
 	centery = 2;
+	this->health = health;
+	Boss::setBossesAlive(getBossesAlive() + 1);
 }
 
-Boss::~Boss(){}
+Boss::~Boss(){
+	Boss::setBossesAlive(getBossesAlive() - 1);
+}
 
 Boss::Boss(Boss& rhs)
 {
@@ -41,9 +47,9 @@ void Boss::draw(){
 void Boss::move()
 {
 	if (counter < 32)
-		moveX(-1 / 6);
+		moveX(-1.0 / 6.0);
 	else
-		moveX(1 / 6);
+		moveX(1.0 / 6.0);
 	if (counter % 16 == 0)
 		shoot_line();
 	if (counter == 63)
@@ -64,7 +70,9 @@ void Boss::collide()
 		if (overlap(*this, *d))
 		{
 			delete d;
-			delete this;
+			this->health--;
+			if (this->health == 0)
+				delete this;
 			return;
 		}
 	}
@@ -80,12 +88,22 @@ void Boss::shoot_bloom()
 		float px = rad * sin(theta);
 		float py = rad * cos(theta);
 
-		new Bullet(getX() + centerx + px, getY() + centery + py, vel * sin(theta), vel * cos(theta), 1);
+		new Bullet(getX() + centerx + px, getY() + centery + py, vel * sin(theta), vel * cos(theta), 3);
 	}
 }
 
 void Boss::shoot_line()
 {
 	for (int i = 0; i < getWidX(); i++)
-		new Bullet(getX() + i, getY() + getWidY() + 1, 0, .25, 1);
+		new Bullet(getX() + i, getY() + getWidY() + 1, 0, .25, 4);
+}
+
+void Boss::setBossesAlive(int count)
+{
+	bosses_alive = count;
+}
+
+int Boss::getBossesAlive()
+{
+	return bosses_alive;
 }

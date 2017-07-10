@@ -19,8 +19,8 @@ Bullet::Bullet(int x, int y, float x_speed, float y_speed, int type)
 	this->y_speed = y_speed;
 	_type = type;
 	symbol = bullets[type];
-	xwid = 1;
-	ywid = 1;
+	xwid = 0.5;
+	ywid = 0.5;
 	lives = 1;
 }
 

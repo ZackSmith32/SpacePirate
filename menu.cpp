@@ -5,7 +5,7 @@
 
 // int Drawable::difficulty = 0;
 
-void	menu(void) {
+int	menu(void) {
 	int max_x;
 	int max_y;
 	int i, c;
@@ -81,6 +81,7 @@ void	menu(void) {
 	free_menu(my_menu);
 	for(i = 0; i < n_choices; ++i)
 		free_item(my_items[i]);
+	return difficulty;
 }
 
 

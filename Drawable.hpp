@@ -42,8 +42,8 @@ protected:
 	float xpos;
 	float ypos;
 
-	int xwid;
-	int ywid;
+	float xwid;
+	float ywid;
 	std::string sprite;
 	
 	char symbol;

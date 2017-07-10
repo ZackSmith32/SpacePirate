@@ -17,7 +17,8 @@ class Enemy : public Drawable {
 		void move();
 		void draw();
 		void collide();
-
+		static void setEnemiesAlive(int count);
+		static int getEnemiesAlive();
 
 	private:
 		float _speed;
@@ -29,6 +30,7 @@ class Enemy : public Drawable {
 		int	_routineIndexMovesMax;
 		static float _xRoutine[2][4];
 		static float _yRoutine[2][4];
+		static int enemies_alive;
 
 		float _xCurr;
 		float _yCurr;
