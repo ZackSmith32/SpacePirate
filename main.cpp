@@ -59,9 +59,10 @@ int main (void)
 				difficulty += 1;
 			}
 		}
-		Drawable::erase_all();
+	//	Drawable::erase_all();
 		Drawable::move_all();
 		Drawable::collide_all();
+		erase();
 		Drawable::draw_all();
 		if (!DEBUG) {
 			refresh();
