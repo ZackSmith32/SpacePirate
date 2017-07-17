@@ -17,4 +17,4 @@ make re; ./bullet
  * curses library
 
 #### Gameplay Gif
-![screenshot](gamePlay.gif)
+![screenshot](./gamePlay.gif)
