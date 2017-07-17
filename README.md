@@ -17,5 +17,4 @@ make re; ./bullet
  * curses library
 
 #### Gameplay Gif
-![gif of gameplay]
- (https://media.giphy.com/media/i4rdBtXHY2wgg/giphy.gif)
+![screenshot](gamePlay.gif)
