@@ -12,6 +12,10 @@ make re; ./bullet
 
 
 
-#### Tech used to make this:
+#### Tech Used to Make This:
  * C++
  * curses library
+
+#### Gameplay Gif
+![gif of gameplay]
+ (http://gph.is/2tztaJ1)
