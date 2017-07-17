@@ -18,4 +18,4 @@ make re; ./bullet
 
 #### Gameplay Gif
 ![gif of gameplay]
- (http://gph.is/2tztaJ1)
+ (https://media.giphy.com/media/i4rdBtXHY2wgg/giphy.gif)
